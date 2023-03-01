@@ -1,0 +1,85 @@
+:root {  
+    --red: rgb(224, 18, 80, .88);
+    --yellow: rgb(247, 183, 32, .97);
+    --blue: rgb(20, 121, 252, .99);
+}
+
+.main {
+    padding-top: 200px;
+    min-height: 100vh;
+    &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        place-items: center;
+        &-title, &-subtitle {
+            text-align: center;
+            position: relative;
+            z-index: 15;
+            width: fit-content;
+            background: transparent !important;
+            font-size: 82px;
+            color: #fff;
+            cursor: default;
+        }
+        &-subtitle {
+            animation: background-pan 1s linear infinite;
+            font-size: 36px;
+            span {
+                font-weight: 600;
+                animation: background-pan 3s linear infinite;
+                background: linear-gradient(
+                    to right,
+                    var(--red),
+                    var(--yellow),
+                    var(--blue),
+                    var(--red)
+                );
+                background-size: 200%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200vh;
+    background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+    background-repeat: repeat;
+    animation: bg-animation .2s infinite;
+    opacity: .9;
+    visibility: visible;
+    z-index: 10;
+}
+
+@keyframes bg-animation {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+    to {
+        background-position: -200% center;
+    }
+}
